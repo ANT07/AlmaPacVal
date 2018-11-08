@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-07-2018 02:03:38 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.hibernate.Valoracion" table="Valoracion" schema="dbo" catalog="ClienteValoracion" optimistic-lock="version">
+        <id name="idValoracion" type="int">
+            <column name="idValoracion" />
+            <generator class="assigned" />
+        </id>
+        <property name="tipoValoracion" type="string">
+            <column name="tipoValoracion" length="250" />
+        </property>
+        <property name="fecha" type="timestamp">
+            <column name="fecha" length="23" />
+        </property>
+    </class>
+</hibernate-mapping>

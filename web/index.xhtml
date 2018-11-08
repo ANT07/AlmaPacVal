@@ -8,51 +8,55 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body >
+        <h:form>
+            <h:commandLink action="Resultados" value="Ver Resultados..."></h:commandLink>
+        </h:form>
+
         <p:panelGrid  columns="2"  >
             <f:facet name="header">                
                 <p:graphicImage value="sources/images/logo pacifico.png"/>
             </f:facet>
             <p:panelGrid columnClasses="true" columns="1" >
                 <f:facet name="header">
-                    Satisfecho
+                    MUY SATISFECHO
                 </f:facet>
                 <h:form>
-                    <input type="hidden" value="SATISFECHO" name="valoracion"></input>
+                    <input type="hidden" value="MUY SATISFECHO" name="valoracion"></input>
                     <p:commandLink actionListener="${valoracionBean.ingresarValoracion}" >
-                        <p:graphicImage value="sources/images/Escudo de El Salvador.png" />
+                        <p:graphicImage value="sources/images/MuySatisfecho.png" width="500" height="500" />
                     </p:commandLink>
                 </h:form>
             </p:panelGrid>
             <p:panelGrid columnClasses="true" columns="1">
                 <f:facet name="header">
-                    Satisfecho
+                    SATISFECHO
                 </f:facet>
                 <h:form>
-                    <input type="hidden" value="" name="valoracion"></input>
+                    <input type="hidden" value="SATISFECHO" name="valoracion"></input>
                     <p:commandLink actionListener="${valoracionBean.ingresarValoracion}" >
-                        <p:graphicImage value="sources/images/Escudo de El Salvador.png" />
+                        <p:graphicImage value="sources/images/Satisfecho.jpg" width="500" height="500"/>
                     </p:commandLink>
                 </h:form>
             </p:panelGrid>
             <p:panelGrid columnClasses="true" columns="1">
                 <f:facet name="header">
-                    Satisfecho
+                    POCO SATISFECHO
                 </f:facet>
                 <h:form>
-                    <input type="hidden" value="SATISFECHO" name="valoracion"></input>
+                    <input type="hidden" value="POCO SATISFECHO" name="valoracion"></input>
                     <p:commandLink actionListener="${valoracionBean.ingresarValoracion}" >
-                        <p:graphicImage value="sources/images/Escudo de El Salvador.png" />
+                        <p:graphicImage value="sources/images/PocoSatisfecho.png" width="500" height="500" />
                     </p:commandLink>
                 </h:form>
             </p:panelGrid>
             <p:panelGrid columnClasses="true" columns="1">
-               <f:facet name="header">
-                    Satisfecho
+                <f:facet name="header">
+                    NADA SATISFECHO
                 </f:facet>
                 <h:form>
-                    <input type="hidden" value="SATISFECHO" name="valoracion"></input>
+                    <input type="hidden" value="NADA SATISFECHO" name="valoracion"></input>
                     <p:commandLink actionListener="${valoracionBean.ingresarValoracion}" >
-                        <p:graphicImage value="sources/images/Escudo de El Salvador.png" />
+                        <p:graphicImage value="sources/images/NadaSatisfecho.png" width="500" height="500" />
                     </p:commandLink>
                 </h:form>
             </p:panelGrid>
