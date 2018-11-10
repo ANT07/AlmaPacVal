@@ -38,7 +38,7 @@ public class ValoracionFacade extends AbstractFacade<Valoracion> {
     SimpleDateFormat fechaFormato = new SimpleDateFormat("yyyy/MM/dd");
 
     public List getCountValoracion() {
-        Query q = this.em.createQuery("SELECT v.tipoValoracion, COUNT(v.idValoracion) FROM Valoracion v where v.fecha BETWEEN :inicio AND :fin GROUP BY v.tipoValoracion");
+        Query q = this.em.createQuery("SELECT v.tipoValoracion ,COUNT(v.tipoValoracion) FROM Valoracion v where v.fecha BETWEEN :inicio AND :fin GROUP BY v.tipoValoracion");
         try {
             q.setParameter("inicio", fechaFormato.parse("2018/01/01"),TemporalType.DATE);
             q.setParameter("fin", fechaFormato.parse("2018/11/07"),TemporalType.DATE);
