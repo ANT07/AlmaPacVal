@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:pm="http://primefaces.org/mobile">
+      xmlns:pm="http://primefaces.org/mobile"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -24,7 +25,7 @@
                     <f:convertDateTime pattern="dd/MM/yyyy"  />
                 </p:calendar>
                 <p:commandButton actionListener="#{resultadosBean.obtenerResultados}" value="Buscar" update="tablaResultados" ajax="false"></p:commandButton>
-                <p:dataGrid var="valoracion" value="#{resultadosBean.resultados}" columns="2" id="tablaResultados">
+                <c:forEach var="valoracion" items="#{resultadosBean.resultados}" >
                     <p:panel header="#{valoracion[0].toString()}" style="font-size: 11pt; width: 100%;">
                         <div style="text-align: center;">
                             <p:graphicImage value="sources/images/#{valoracion[0].toString().toLowerCase()}.png" width="100" height="100"   />
@@ -33,7 +34,7 @@
                             </pm:footer>
                         </div>
                     </p:panel >
-                </p:dataGrid> 
+                </c:forEach>
             </h:form>
         </pm:content>
 
