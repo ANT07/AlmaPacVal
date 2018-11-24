@@ -8,6 +8,7 @@ package valoracion.controlador;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -25,6 +26,7 @@ public class ValoracionBean {
 
     @EJB
     ValoracionFacade servicioValoracion;
+    
     Valoracion valoracion = new Valoracion();
 
     /**
@@ -40,6 +42,13 @@ public class ValoracionBean {
         valoracion.setTipoValoracion(seleccion);
         valoracion.setFecha(calendario.getTime());
         servicioValoracion.create(valoracion);
+        MensajeExito();
+    }
+    
+    public void MensajeExito(){
+        FacesContext context = FacesContext.getCurrentInstance();
+        FacesMessage mensaje = new FacesMessage("Exito","Gracias, Te esperamos pronto");
+        context.addMessage(null, mensaje);
     }
 
 }

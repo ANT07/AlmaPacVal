@@ -7,6 +7,7 @@ package valoracion.facade;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,23 +36,19 @@ public class ValoracionFacade extends AbstractFacade<Valoracion> {
     public ValoracionFacade() {
         super(Valoracion.class);
     }
-    SimpleDateFormat fechaFormato = new SimpleDateFormat("yyyy/MM/dd");
 
-    public List getCountValoracion() {
-        Query q = this.em.createQuery("SELECT v.tipoValoracion ,COUNT(v.tipoValoracion) FROM Valoracion v where v.fecha BETWEEN :inicio AND :fin GROUP BY v.tipoValoracion");
+    public List getCountValoracion(Date desde, Date hasta) {
+        List lista = null;
         try {
-            q.setParameter("inicio", fechaFormato.parse("2018/01/01"),TemporalType.DATE);
-            q.setParameter("fin", fechaFormato.parse("2018/11/07"),TemporalType.DATE);
-        } catch (ParseException ex) {
-            Logger.getLogger(ValoracionFacade.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        List lista = q.getResultList();
-        return lista;
-    }
+            Query q = this.em.createQuery("select V.tipoValoracion, COUNT(V) from Valoracion V WHERE V.fecha BETWEEN :inicio AND :fin GROUP BY V.tipoValoracion");
+            q.setParameter("inicio", desde, TemporalType.DATE);
+            q.setParameter("fin", hasta, TemporalType.DATE);
+            lista = q.getResultList();
 
-    public static void main(String[] args) {
-        ValoracionFacade valoracioner = new ValoracionFacade();
-        System.out.println(valoracioner.getCountValoracion());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+            return lista;
     }
 
 }
