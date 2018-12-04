@@ -20,7 +20,9 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import valoracion.entidades.Valoracion;
 import valoracion.facade.ValoracionFacade;
+import valoracion.otros.UtilsClass;
 
 /**
  *
@@ -35,6 +37,9 @@ public class ResultadosBean {
     ValoracionFacade serviciosValoracion;
     private Date desde;
     private Date hasta;
+    private List<Valoracion> historial = null;
+    private UtilsClass utilsClass = new UtilsClass();
+
 
     /**
      * Creates a new instance of ResultadosBean
@@ -53,8 +58,30 @@ public class ResultadosBean {
                 Logger.getLogger(ResultadosBean.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+
         resultados = serviciosValoracion.getCountValoracion(desde, hasta);
+    }
+
+
+
+    public void actualizarHistorial() {
+        historial = serviciosValoracion.obtenerHistorial();
+    }
+
+    public ValoracionFacade getServiciosValoracion() {
+        return serviciosValoracion;
+    }
+
+    public void setServiciosValoracion(ValoracionFacade serviciosValoracion) {
+        this.serviciosValoracion = serviciosValoracion;
+    }
+
+    public UtilsClass getUtilsClass() {
+        return utilsClass;
+    }
+
+    public void setUtilsClass(UtilsClass utilsClass) {
+        this.utilsClass = utilsClass;
     }
 
     public List getResultados() {
@@ -79,6 +106,17 @@ public class ResultadosBean {
 
     public void setHasta(Date hasta) {
         this.hasta = hasta;
+    }
+
+    public List<Valoracion> getHistorial() {
+        if (historial == null) {
+            historial = serviciosValoracion.obtenerHistorial();
+        }
+        return historial;
+    }
+
+    public void setHistorial(List<Valoracion> historial) {
+        this.historial = historial;
     }
 
 }

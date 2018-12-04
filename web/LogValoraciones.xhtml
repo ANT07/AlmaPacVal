@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./Plantilla.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title">
+        Historial
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <p:growl id="growl" life="3000" sticky="false" showDetail="true" showSummary="true"/> 
+            <p:poll listener="#{resultadosBean.actualizarHistorial}" update="panel_historial" interval="5"></p:poll>
+            <p:dataList value="#{resultadosBean.historial}" var="valoracion" type="unordered" itemType="none" paginator="true" rows="8" styleClass="paginated" id="panel_historial">
+                <f:facet name="header">
+                    Historial del Dia
+                </f:facet>
+                <p:panelGrid columns="2">
+                    <p:graphicImage value="sources/images/#{valoracion.tipoValoracion.toLowerCase()}.png" height="50" width="50"/>
+                    <div>
+                        <h:outputText value="#{valoracion.tipoValoracion}" style="font-weight: bold;"/><br/>
+                        <h:outputText value="Hora: #{resultadosBean.utilsClass.obtenerHora(valoracion.fecha)}" />  
+                    </div>
+                </p:panelGrid>
+            </p:dataList>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

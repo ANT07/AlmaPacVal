@@ -4,9 +4,20 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 
-<application>
-	<navigation-handler>
-		org.primefaces.mobile.application.MobileNavigationHandler
-	</navigation-handler>
-</application>
+    <application>
+        <navigation-handler>
+            org.primefaces.mobile.application.MobileNavigationHandler
+        </navigation-handler>
+        <!--        <system-event-listener>
+            <system-event-listener-class>
+                valoracion.otros.Sistema
+            </system-event-listener-class>
+            <system-event-class>
+                javax.faces.event.PostConstructApplicationEvent
+            </system-event-class>
+        </system-event-listener>
+        -->
+
+        
+    </application>
 </faces-config>

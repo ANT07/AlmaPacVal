@@ -27,7 +27,7 @@ public class ValoracionBean {
     @EJB
     ValoracionFacade servicioValoracion;
     
-    Valoracion valoracion = new Valoracion();
+    Valoracion valoracion = null;
 
     /**
      * Creates a new instance of ValoracionBean
@@ -35,10 +35,9 @@ public class ValoracionBean {
     public ValoracionBean() {
     }
 
-    public void ingresarValoracion() {
+    public void ingresarValoracion(String seleccion) {
         GregorianCalendar calendario = (GregorianCalendar)Calendar.getInstance();
-        ServletRequest request = (ServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-        String seleccion = request.getParameter("valoracion");
+        valoracion = new Valoracion();
         valoracion.setTipoValoracion(seleccion);
         valoracion.setFecha(calendario.getTime());
         servicioValoracion.create(valoracion);
